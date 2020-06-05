@@ -12,6 +12,33 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   </head>
   <body>
-    <script src="./plugin/javascript.js"></script>
+    <script>
+      swal
+        .fire({
+          imageUrl: "./img/professor-oak.png",
+          imageheight: "200px",
+          title: "<strong>您好，我是 <u>大木博士</u></strong>",
+          text: "「歡迎來到神奇寶貝的世界！」",
+          confirmButtonText: "繼續->",
+        })
+        .then((result) => {
+          swal
+            .fire({
+              imageUrl: "./img/jeni.png",
+              imageheight: "200px",
+              title: "<strong><u>傑尼龜</u>：傑尼傑尼</strong>",
+              text: "「這個世界居住著一個叫神奇寶貝的生物，」",
+              confirmButtonText: "繼續->",
+            })
+            .then((result) => {
+              swal.fire({
+                imageUrl: "../img/fight.png",
+                title: "<strong>您好，我是 <u>大木博士</u></strong>",
+                text: "「對某些人來說，神奇寶貝是寵物，但也可以拿來打架。」",
+                confirmButtonText: "繼續->",
+              });
+            });
+        });
+    </script>
   </body>
 </html>
