@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>陣列與物件</title>
+</head>
+
+<body>
+  <h1>陣列與物件</h1>
+  <script>
+    let ary = new Array();
+    for (let i = 0; i < 11; i++) {
+      ary.push("+" + i);
+    }
+    console.log("--我-是-分-隔-線--");
+    function showary(value, item) {
+      console.log(`item=${item},value=${value}`);
+    }
+    ary.forEach(showary);
+
+    ary.forEach(function (value, item) { console.log(item, value) });
+
+    // ES6 箭頭函式，作用類似匿名函式
+    ary.forEach((value, item) => {
+      console.log(item, value);
+    })
+    console.log("--我-是-分-隔-線--");
+    // for-of 只會提供Value，沒有Key
+    for (let i of ary) {
+      console.log(i);
+    }
+    console.log("--我-是-分-隔-線--");
+    ary[50] = 100;
+
+    // QA: 請幫忙將陣列的無效陣列格子移除
+    function clearNull(val) {
+      return (val != null);
+    }
+    b = ary.filter(clearNull);
+    console.log(b);
+
+    //縮寫寫法
+    ary = ary.filter((val) => { return val != null });
+    console.log(ary);
+    console.log("--我-是-分-隔-線--");
+
+    // DATA陣列適合拿來做「資料整理」，DATA物件適合做「暫存存取」
+
+    let obj = {
+      cat: "加菲貓",
+      dog: "布魯托",
+      others: {
+        house: "彩虹小馬",
+        mouse: "米老鼠"
+      },
+      bird: "崔弟"
+    }; //JSON格式寫法
+    console.log(obj);
+    console.log("--我-是-分-隔-線--");
+
+    // for-in 提供 key
+    for (const key in obj) {
+      console.log(key, obj[key]);
+    }
+
+    // 原生練
+    // fo4 (i=o;i<=.....);
+    // for (... of ...) val
+    // for (... in ...) key
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
