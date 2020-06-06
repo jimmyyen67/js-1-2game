@@ -10,6 +10,7 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="./plugin/js.js"></script>
   </head>
   <body>
     <script>
@@ -24,19 +25,130 @@
         .then((result) => {
           swal
             .fire({
-              imageUrl: "./images/jeni.png",
+              imageUrl: "./images/pikachu.png",
               imageheight: "200px",
-              title: "<strong><u>傑尼龜</u>：傑尼傑尼</strong>",
+              title: "這是皮卡丘",
               text: "「這個世界居住著一個叫神奇寶貝的生物，」",
               confirmButtonText: "繼續->",
             })
             .then((result) => {
-              swal.fire({
-                imageUrl: "./images/fight.png",
-                title: "<strong>上吧， <u>皮卡丘</u>！使出拳擊！</strong>",
-                text: "「對某些人來說，神奇寶貝是寵物，但也可以拿來打架。」",
-                confirmButtonText: "繼續->",
-              });
+              swal
+                .fire({
+                  imageUrl: "./images/fight.png",
+                  title: "<strong>上吧， <u>皮卡丘</u>！使出拳擊！</strong>",
+                  text: "「對某些人來說，神奇寶貝是寵物，但也可以拿來打架。」",
+                  confirmButtonText: "繼續->",
+                })
+                .then((result) => {
+                  Swal.fire({
+                    imageUrl: "./images/reddd.png",
+                    title: "首先告訴我，你的名字是？",
+                    input: "text",
+                    inputValue: "小智",
+                    confirmButtonText: "我的名字->",
+                    confirmButtonColor: "#008800",
+                    inputValidator: (value) => {
+                      if (value) {
+                        let myname = value;
+                        Swal.fire({
+                          imageUrl: "./images/reddd.png",
+                          title: `好的，你的名字叫做<u>${myname}</u>`,
+                          text: `開始之前，我必須.....將你縮小~`,
+                          confirmButtonText: "沒錯->",
+                        }).then((result) => {
+                          Swal.fire({
+                            imageUrl: "./images/redd.png",
+                            title: `身體變化中`,
+                            html: `<u>${myname}</u>：「嗯？」`,
+                            confirmButtonText: "繼續->",
+                          }).then((result) => {
+                            Swal.fire({
+                              imageUrl: "./images/red.png",
+                              title: `你的神奇寶貝的旅程即將開始`,
+                              html: `<u>${myname}</u>：「尛！」`,
+                              confirmButtonText: "繼續->",
+                            }).then((result) => {
+                              Swal.fire({
+                                imageUrl: "./images/professor-oak.jpg",
+                                title: `考驗的開始`,
+                                html: `想成為神奇寶貝訓練師，必須要有一定基礎的神奇寶貝知識，所以就先讓我考考你幾個題目吧`,
+                                confirmButtonText: "接受挑戰->",
+                              }).then((result) => {
+                                Swal.fire({
+                                  imageUrl: "./images/question1.png",
+                                  title: "第一題：我是誰",
+                                  input: "radio",
+                                  inputOptions: inputOption1,
+                                  confirmButtonText: "答題->",
+                                  inputValidator: (value) => {
+                                    if (!value) {
+                                      return "你還沒選喔";
+                                    } else {
+                                      let ans1 = value;
+                                      if (ans1 == "#1") {
+                                        Swal.fire({
+                                          imageUrl: "./images/answer1.png",
+                                          title: `答錯！是皮卡丘`,
+                                          text: `看來你沒什麼資質呀.....`,
+                                          confirmButtonText: "回家修練->",
+                                        }).then((result) => {
+                                          history.go(0);
+                                        });
+                                      } else {
+                                        Swal.fire({
+                                          imageUrl: "./images/answer1.png",
+                                          title: `答對！就是是皮卡丘`,
+                                          text: `看來很有成為神奇寶貝大師的潛質喔`,
+                                          confirmButtonText: "下一題->",
+                                        }).then((result) => {
+                                          Swal.fire({
+                                            imageUrl: "./images/question2.png",
+                                            title: "第二題：我是誰",
+                                            input: "radio",
+                                            inputOptions: inputOption2,
+                                            confirmButtonText: "答題->",
+                                            inputValidator: (value) => {
+                                              if (!value) {
+                                                return "你還沒選喔";
+                                              } else {
+                                                let ans2 = value;
+                                                if (ans2 == "#1") {
+                                                  Swal.fire({
+                                                    imageUrl:
+                                                      "./images/answer2.png",
+                                                    title: `答錯！還~是皮卡丘`,
+                                                    text: `看來你沒什麼資質呀.....`,
+                                                    confirmButtonText:
+                                                      "回家修練->",
+                                                  }).then((result) => {
+                                                    history.go(0);
+                                                  });
+                                                } else {
+                                                  Swal.fire({
+                                                    imageUrl:
+                                                      "./images/answer2.png",
+                                                    title: `答對！這一題還是皮卡丘`,
+                                                    text: `實力不錯，看來上一題並不是用猜的呢`,
+                                                    confirmButtonText:
+                                                      "下一題->",
+                                                  });
+                                                }
+                                              }
+                                            },
+                                          });
+                                        });
+                                      }
+                                    }
+                                  },
+                                });
+                              });
+                            });
+                          });
+                        });
+                      }
+                    },
+                  });
+                });
             });
         });
     </script>
